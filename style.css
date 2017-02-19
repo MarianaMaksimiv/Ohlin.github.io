@@ -161,6 +161,22 @@ font-size: 1em;
   font-size:0.95em;
 }
 }
+@media (max-width: 376px) {
+  .logo{
+    margin-left: 10%;
+  }
+  .btn {
+    margin-left: 27.5%;
+  }
+  .textSec {
+    height: 565px;
+}
+.foot{
+  width: 70%;
+  margin-left: 17%;
+}
+}
+
 // @media only screen and (max-width: 768px) {
 // .logo{
 //   margin:auto;
