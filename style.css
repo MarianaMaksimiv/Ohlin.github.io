@@ -181,99 +181,13 @@ font-size: 1em;
   margin-left: 17%;
   margin-top: 4%;
 }
+.main-section {
+    margin-top: 223px;
 }
-
-
-
-
-// @media only screen and (max-width: 768px) {
-// .logo{
-//   margin:auto;
-//   margin-top: 6%;
-// }
-// .main-section{
-//   margin-left: 14%;
-  
-// }
-// .main-title{
-//   text-align:center;
-//   font-size: 2.8em;
-//   line-height: 1.2;
-// }
-// .main-subtitle{
-//   text-align:center;
-// }
-// button{
-//   margin-left: 37%;
-// }
-
-  
-
-// .first{
-//     margin-left:21.750px;
-//   width:30%;
-// }
-// .contactHeader{
-//   font-size: 1.4em;
-//   width: 100%;
-// }
-// ul{
-//   padding: 0;
-// }
-// .nameCompany{
-//   width:229.5px;
-//       font-size: 0.9em;
-// }
-// }
-// @media only screen and (max-width: 730px) {
-
-// li{
-//   float:none;
-//   width:95%;
-//   text-align: center;
-// }
-// .first{
-//   width:95%;
-//   text-align: center;
-// }
-// .textSec {
-//     height: auto;
-//     }
-// .contactHeader{
-//   font-size: 1.4em;
-//   width: 100%;
-// }
-// ul{
-//   padding: 0;
-// }
-// .nameCompany{
-//   text-align: center;
-//   width:100%;
-// }
-// .main-section{
-//     width: 64%;
-// }
-// .main-title {
-//     width: 100%;
-//     font-size: 2em;
-//     }
-//     .main-subtitle {
-//     width: 100%;
-//     font-size: 0.9em;
-//     }
-// }
-// @media only screen and (max-width: 450px) {
-//   .main-section{
-//     width: 100%;
-//     margin-left:0;
-// }
-// .logo {
-//     margin-top: 11%;
-//     }
-//     .large-header{
-//       height:530px!important;
-//     }
-//     .footer {
-//     margin-left: 25%;
-// }
-// }
+.marg{
+  margin-top: 25px; 
+}
+footer.row{
+  margin-top: 80px!important
+}
+}
