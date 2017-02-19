@@ -3,51 +3,57 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
 	<link rel="stylesheet" href="style.css" type="text/css">
-
+<!-- col-xs-12 col-sm-12 col-md-12 -->
 </head>
 <body>
+<div class="container-fluid">
 	<div id="large-header" class="large-header">
-	<header>	
-		<div class="logo"></div>
+	<header class="row">	
+		<div class="col-xs-offset-3 col-sm-offset-3 col-md-offset-1 logo"></div>
 	</header>
-		<section class="main-section">
-  	<h1 class="main-title">The world of data and information is complex
+		<section class="row main-section">
+  	<h1 class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-1 main-title align">The world of data and information is complex
   	</h1>
-    <p class="main-subtitle">This is why targeted strategy and application of information Management, Business Inteligence and Advanced Analitics is key for commercial success, not only to complete but to excel. 
+    <p class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-1 main-subtitle align">This is why targeted strategy and application of information Management, Business Inteligence and Advanced Analitics is key for commercial success, not only to complete but to excel. 
     </p>
-    <button type="button"><a class="learn" href="#anchor">learn more</a></button>
+    <div class="col-xs-4 col-xs-offset-4 col-sm-4 col-sm-offset-4 col-md-6 col-md-offset-1">
+    <button type="button"><a class="learn" href="#anchor">learn more</a></button></div>
+   
     	</section>
   <canvas id="demo-canvas"></canvas>  
 </div>
-  <section class="textSec">
+<!-- white sec -->
+  <section class="row textSec">
   <a name="anchor"></a>
-  	<ul>
-  		<li class="first">
-  			<p class="contactHeader">Contact Us To Learn More</p>
+  <div class="col-xs-12 col-sm-3 col-md-3 col-md-offset-1 align"> 
+  <p class="contactHeader">Contact Us To Learn More</p>
   			<p class="nameCompany">Ohlin Group Limited</p>
   			<p class="cityInfo">1 Ropemaker Street <br>London, EC2Y 9HU<br>United Kindom</p>
   			<p class="tel">
   			<span>E: </span>info@ohlingroup.com <br>
 			<span>P: </span>0203 764 3621 22
-  			</p>
-  		</li>
-  		<li>
-  		<p class="contactHeader">Headline Goes Here At A Later Stage</p>
+  			</p></div>
+  <div class="col-xs-12 col-sm-5 col-md-4 align">
+  	<p class="contactHeader">Headline Goes Here At A Later Stage</p>
   		<p class="nameCompany">This is why targeted strategy and application of information Management, Business Inteligence and Advanced Analitics is key for commercial success, not only to complete but to excel. </p>
   		<a href="#" class="link">Read The Insight Report</a>
-  		</li>
-  		<li>
-  			<p class="contactHeader">Headline Goes Here At A Later Stage</p>
-  			<p class="nameCompany">This is why targeted strategy and application of information Management, Business Inteligence and Advanced Analitics is key for commercial success, not only to complete but to excel. </p>
-  			<a href="#" class="link">Read The Insight Report</a>
-  		</li>
-  	</ul>
-  </section>
-  <footer><p class="footer">Alot of copyright text would be here</p></footer>
+  </div>
+  <div class="col-xs-12 col-sm-4 col-md-4 align">
+  	<p class="contactHeader">Headline Goes Here At A Later Stage</p>
+  		<p class="nameCompany">This is why targeted strategy and application of information Management, Business Inteligence and Advanced Analitics is key for commercial success, not only to complete but to excel. </p>
+  		<a href="#" class="link">Read The Insight Report</a>
+  </div>
+ </section>
+  <footer class="row">
+  <p class="col-xs-offset-3 col-xs-6 col-sm-offset-4 col-sm-4 col-md-offset-5 col-md-3 foot">Alot of copyright text would be here</p>
+  </footer>
+  </div>
 <script type="text/javascript" src="script.js"></script>
 </body>
 </html>
