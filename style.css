@@ -62,7 +62,10 @@ button{
   height: 40px;
   margin-top:20px;
 }
-
+a:focus, a:hover {
+    color: lightgrey;
+    text-decoration: none;
+}
 .textSec{
   width: 90%;
   margin: auto;
@@ -137,13 +140,11 @@ margin-left: 0;
  }
  @media (max-width: 749px) { 
   .contactHeader {
-    font-size:1.6em
+    font-size:1.6em;
+        width: 100%;
   }
   .textSec{
     height:480px;
-  }
-  .contactHeader{
-    width: 100%;
   }
   .nameCompany{
     width: 100%;
@@ -161,21 +162,29 @@ font-size: 1em;
   font-size:0.95em;
 }
 }
-@media (max-width: 376px) {
+@media (max-width: 400px) { 
   .logo{
-    margin-left: 10%;
+     margin-left: 12%;
   }
-  .btn {
-    margin-left: 27.5%;
-  }
-  .textSec {
+  .main-title {
+    font-size: 2em;
+    line-height: 1.2;
+}
+.btn {
+   margin-left: 27.5%;
+ }
+   .textSec {
     height: 565px;
 }
 .foot{
   width: 70%;
   margin-left: 17%;
+  margin-top: 4%;
 }
 }
+
+
+
 
 // @media only screen and (max-width: 768px) {
 // .logo{
