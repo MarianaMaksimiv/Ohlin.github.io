@@ -1,0 +1,213 @@
+body{
+  margin: 0;
+  outline:none;
+}
+header{
+width: 100%;
+min-height: 155px;
+border-bottom: 4px solid white;
+position: absolute
+}
+/* Header */
+.large-header {
+  position: relative;
+  width: 100%;
+  background: #333;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center center;
+  z-index: 1;
+}
+.logo{
+  background-image: url(images/largelogo.png);
+  width: 300px;
+  height: 61px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-left: 140px;
+  margin-top: 50px;
+}
+#large-header {
+  background-image: url("images/bg.jpg");
+}
+.main-section{
+  margin-left: 140px;
+  color:white;
+  position: absolute;
+  margin-top:200px;
+}
+
+.main-title {
+  font-size: 4.2em;
+  font-family: 'Lora', serif;
+  font-weight: normal;
+  width: 600px;
+  line-height: 0.9;
+  margin-bottom: 0;
+}
+
+.main-subtitle{
+  font-family: 'Open Sans', sans-serif;
+  width: 600px;
+font-size: 1.34em;
+font-weight: 100;
+}
+.learn{
+  text-transform: uppercase;
+  color:white;
+  font-size: 16px;
+  text-decoration:none;
+}
+button{
+  background-color: #213a70;
+  border:none;
+  width: 140px;
+  height: 40px;
+  margin-top:20px;
+}
+
+.textSec{
+  width: 100%;
+  height:400px;
+  background-color: #FFF;
+}
+li{
+  float:left;
+  width:30%;
+  list-style:none;
+  margin-left: 3%;
+  font-family: 'Open Sans', sans-serif;
+}
+.contactHeader{
+  color: #213a70;
+  font-size: 2.04em;
+  width: 85%;
+  font-family: 'Lora', serif;
+}
+.cityInfo{
+  line-height: 1.4;
+  color:grey;
+  margin-top: 0
+}
+.tel{
+  color:grey;
+}
+.tel > span {
+  color:black;
+  font-weight:700;
+}
+.nameCompany{
+  margin:0;
+  color:#171717;
+  width: 330px;
+}
+.link{
+  color:#2450af;
+  display:block;
+  margin-top:20px;
+}
+footer{
+  width:100%;
+  height:50px;
+  background-color: #6a6868;
+}
+.footer{
+display: inline-block;
+vertical-align: middle;
+margin-left: 40%;
+}
+.first{
+  margin-left:100px;
+  width: 21%
+}
+@media only screen and (max-width: 768px) {
+.logo{
+  margin:auto;
+  margin-top: 6%;
+}
+.main-section{
+  margin-left: 14%;
+  
+}
+.main-title{
+  text-align:center;
+  font-size: 2.8em;
+  line-height: 1.2;
+}
+.main-subtitle{
+  text-align:center;
+}
+button{
+  margin-left: 37%;
+}
+
+  
+
+.first{
+    margin-left:21.750px;
+  width:30%;
+}
+.contactHeader{
+  font-size: 1.4em;
+  width: 100%;
+}
+ul{
+  padding: 0;
+}
+.nameCompany{
+  width:229.5px;
+      font-size: 0.9em;
+}
+}
+@media only screen and (max-width: 730px) {
+
+li{
+  float:none;
+  width:95%;
+  text-align: center;
+}
+.first{
+  width:95%;
+  text-align: center;
+}
+.textSec {
+    height: auto;
+    }
+.contactHeader{
+  font-size: 1.4em;
+  width: 100%;
+}
+ul{
+  padding: 0;
+}
+.nameCompany{
+  text-align: center;
+  width:100%;
+}
+.main-section{
+    width: 64%;
+}
+.main-title {
+    width: 100%;
+    font-size: 2em;
+    }
+    .main-subtitle {
+    width: 100%;
+    font-size: 0.9em;
+    }
+}
+@media only screen and (max-width: 450px) {
+  .main-section{
+    width: 100%;
+    margin-left:0;
+}
+.logo {
+    margin-top: 11%;
+    }
+    .large-header{
+      height:530px!important;
+    }
+    .footer {
+    margin-left: 25%;
+}
+}
