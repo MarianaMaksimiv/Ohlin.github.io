@@ -1,0 +1,541 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+  <title>Real Deal</title>
+   
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, initial-scale=1">
+  
+
+  <script src="js/lib/modernizr-2.6.2.min.js"></script>
+  <script src="js/lib/jquery-1.10.2.min.js"></script>
+    <script src="js/lib/helpers-script-0.11.js"></script>
+   
+  <script src="js/plugins.js"></script>
+  <script src="js/core-2014-main.js?v=5"></script>
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/fontello.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="css/mainStyle.css">
+  <link rel="stylesheet" href="public/app-assets/icons/css/fontello.css">
+  <link rel="stylesheet" type="text/css" href="css/globals.css">
+
+  <link rel="stylesheet" type="text/css" href="css/responsive.css">
+
+  <script type="text/javascript">     
+  var baseUrl = 'http://corenyc.com/';
+  var uId = 'newdevelopment-37';
+  var currentUrl = 'developments/walker-tower';
+  var spinnerLink = "public/app-assets/img/spinner.gif";
+  
+  
+   
+  
+  $(document).ready(function(){   
+      var clone = $('#sticky-menu .inner').clone()
+      $('#sticky-menu-target').append(clone);
+
+
+            var mainNavHtml = $('#main-nav').html()
+
+            $('#mobile-nav').html(mainNavHtml);
+            executeAsInterval('navSticker');
+      truncatePager();
+      addPlayerButtonsToVideos();
+
+
+  });
+
+  $(window).load(function(){
+    
+  });
+
+
+  
+  function navSticker(){
+    if( $('#sticky-menu').length > 0){
+      scrollTop = $(window).scrollTop();
+      //myTrace(scrollTop); 
+      
+      var position = $('#sticky-menu').offset(); 
+      var topPosition = position.top; 
+      var clipPoint = scrollTop-topPosition+160;
+            //myTrace('clipPoint '+clipPoint);  
+      
+      //var clippingPoint = $('#sticky-menu').attr('data-clipping-point');
+      
+      if(clipPoint > 0 && windowWidth > 600){
+        ///$('#sticky-menu-target').fadeIn(); 
+        $('#sticky-menu-target').slideDown();
+      }
+      else{
+        //$('#sticky-menu').fadeOut;
+        $('#sticky-menu-target').slideUp(); 
+      }
+    }
+  }
+  
+  </script>
+</head>
+
+
+
+<!-- uId: homepage-1 / homepage-1 -->
+<body class="homepage-body  homepage-1-entity" style="opacity: 1;">
+<div id="page-body">
+
+<a id="top" name="top"></a>
+<header>
+    
+<div id="hambuger">
+    <a href="javascript:toggleMiniNav()">
+        <img id="mini-nav" src="img/mini-nav-icon.png">
+    </a>
+</div>
+
+
+<a id="logo-wrapper" href="#"><img id="logo" src="img/logoSvg.svg" alt="Real Deal"></a>
+<nav id="mobile-nav" class="main-nav">
+    
+<ul class="level-1">
+   <li id="standardpage-16-node" class="level-1 normal standardpage-16-node"><a href="index.html" class="level-1 normal standardpage-16-node ">Home</a></li>
+   <li id="standardpage-20-node" class="level-1 normal standardpage-20-node"><a href='properties.html' class="level-1 normal standardpage-20-node ">Properties</a></li>
+   <li id="standardpage-25-node" class="level-2 normal standardpage-25-node"><a href="developments.html" class="level-2 normal standardpage-25-node ">Developments</a></li>
+   <li id="standardpage-1-node" class="level-1 normal standardpage-1-node"><a href="blog.html" class="level-1 normal standardpage-1-node ">Blog</a></li>
+<li class="menu-span"></li>
+</ul>
+</nav>
+
+<nav id="main-nav" class="main-nav">
+    
+<ul class="level-1">
+  <li id="standardpage-16-node" class="level-1 normal standardpage-16-node"><a href="index.html" class="level-1 normal standardpage-16-node ">Home</a></li>
+   <li id="standardpage-20-node" class="level-1 normal standardpage-20-node"><a href='properties.html' class="level-1 normal standardpage-20-node ">Properties</a></li>
+   <li id="standardpage-25-node" class="level-2 normal standardpage-25-node"><a href="developments.html" class="level-2 normal standardpage-25-node ">Developments</a></li>
+   <li id="standardpage-1-node" class="level-1 normal standardpage-1-node"><a href="blog.html" class="level-1 normal standardpage-1-node ">Blog</a></li>
+<li class="menu-span"></li>
+</ul>
+</nav>
+<div id="nav-border-line"></div>
+<div id="listing-header-alt-headline"></div>
+
+<div id="search-site">
+
+    <form action="search" type="get">
+        <input type="text" name="q">
+
+    </form>
+</div>
+
+<ul id="page-functions" class="hidden  visible-lg">
+
+    <li><a href="https://www.facebook.com" target="_blank">
+            <span class="state-hover">
+                <img class="mouse-out" src="img/facebook-icon-grey.svg">
+                <img class="mouse-over" src="img/facebook-icon-red (1).svg">
+            </span>
+        </a>
+    </li>
+    <li>
+        <a href="//instagram.com" target="_blank" onclick="ga('send','event','page','instagram click','')">
+            <span class="state-hover">
+                <img class="mouse-out" src="img/instagram-icon-grey.svg">
+                <img class="mouse-over" src="img/instagram-icon-red (1).svg">
+            </span>
+        </a>
+    </li>
+     <li>
+        <a href="https://www.linkedin.com/feed/" target="_blank" onclick="ga('send','event','page','youtube click','')">
+             <span class="state-hover">
+                <img class="mouse-out" src="img/in-icon-gray.svg">
+                <img class="mouse-over" src="img/in-icon-red.svg">
+            </span>
+        </a>
+    </li>
+  <li>
+        <a href="https://twitter.com" target="_blank" onclick="ga('send','event','page','twitter click','')">
+             <span class="state-hover">
+                <img class="mouse-out" src="img/twitter-icon-grey.svg">
+                <img class="mouse-over" src="img/twitter-icon-red (1).svg">
+            </span>
+        </a>
+    </li>
+    
+   
+    <li class="subscribe">
+        <a href="#">Subscribe</a>
+    </li>
+</ul>
+<!-- Content injection via Javascript on listing overview page-->
+<div id="listing-filter-toggle" class="hidden visible-xs visible-sm visible-md"></div>      
+
+<div id="sticky-menu-target">
+<div class="inner"></div>
+</div></header>
+<!--                 header end                 -->
+
+
+<main>  
+<!-- application/views/newdevelopment-viewelement.phtml -->
+<h1 class="other-type-header">Developments</h1>
+
+<h2 class="subhead-header">Walker Tower</h2>
+            <div id="sticky-menu">
+                <div class="inner">
+
+                                            <ul class="tab-menu">
+                            <a href="developments?show=properties"><li id="tab-menu-3">Properties</li></a>
+                            <a href="developments/developments"><li id="tab-menu-4">Floorplans</li></a>
+                            <a href="developments?show=case-studies"><li id="tab-menu-2">Map</li></a>
+                           
+                            <div class="clearfix">&nbsp;</div>
+                        </ul>
+                    
+
+
+                </div>
+            </div>
+        <section class="new-development-head">
+
+<div class="mediabox">
+  <img data-file-id="3602" data-org-height="1440" data-org-width="1920" itemprop="image" src="img/960w__walker-tower-1920x1440-3602.jpg">    
+</div>
+ 
+   <!-- <h4>FILM TITLE GOES HERE</h4>-->
+<h4>&nbsp;</h4>
+<article class="standard no-border new-dev-text-body"> 
+   <p><strong>212 WEST 18TH STREET</strong><br> <strong>NEW YORK, NY 10011</strong><br><br><br> A building without peer, Walker Tower has redefined the market and raised the bar for luxury living downtown. Constructed in 1929 by the legendary architect Ralph Thomas Walker, hailed in The New York Times as the “architect of the century”, Walker Tower has been transformed into 50 luxury condominiums. The elaborate brick façade has been painstakingly restored, as has the Art Deco ornamentation that Walker made famous through architectural masterpieces including One Wall Street and the Barclay-Vesey Building. Built before neighborhood height limits were enacted, Walker Tower rises high above its surrounding, enjoying stunning and protected 360-degree Manhattan views. Sweeping interior spaces, soaring ceilings reaching nearly 14 feet, large new tilt-and-turn windows, grand private terraces, custom-designed finishes and a comprehensive amenities package make Walker Tower a pre-war icon and modern-day marvel.<br><br> Doug Heddings<br> 212-612-9654<br> <a href="mailto:dheddings@corenyc.com">dheddings@corenyc.com</a></p></article>
+    
+</section>
+
+    <section class="new-development-teaser teaser-tiles">
+        <ul class="teaser teaser-small ">
+            <li>
+<div id="link-container-1" class="hover-teaser  new-dev-title">
+    <div class="img-content"><img data-file-id="3400" data-org-height="360" data-org-width="640" itemprop="image" src="img/640w__walker_tower_tile1-3400.jpg"></div>
+  <div class="hover-text" style="display: none;"><div class="text-content"><p>Gracious, sun-drenched floorplans include French herringbone oak flooring, radiant floor heating and soaring ceilings.</p></div></div>
+        <div id="mirco-video-1" class="mirco-video" style="display: block;"></div>
+</div>
+</li>
+
+
+<li>
+<div id="link-container-2" class="hover-teaser  new-dev-title">
+    <div class="img-content"><img data-file-id="3401" data-org-height="360" data-org-width="640" itemprop="image" src="img/640w__walker_tower_tile2-3401.jpg"></div>
+  <div class="hover-text" style="display: none;"><div class="text-content"><p>Private terraces showcase sweeping 180-degree north and south Manhattan views.</p></div></div>
+        <div id="mirco-video-2" class="mirco-video" style="display: block;"></div>
+</div>
+</li>
+
+
+<li>
+<div id="link-container-3" class="hover-teaser  new-dev-title">
+    <div class="img-content"><img data-file-id="3402" data-org-height="360" data-org-width="640" itemprop="image" src="img/640w__walker_tower_tile3-3402.jpg"></div>
+  <div class="hover-text" style="display: none;"><div class="text-content"><p>Each residence is replete with Smallbone kitchens.</p></div></div>
+        <div id="mirco-video-3" class="mirco-video" style="display: block;"></div>
+</div>
+</li>
+
+
+<li>
+<div id="link-container-4" class="hover-teaser  new-dev-title">
+    <div class="img-content"><img data-file-id="3403" data-org-height="360" data-org-width="640" itemprop="image" src="img/640w__walker_tower_tile4-3403.jpg"></div>
+  <div class="hover-text" style="display: none;"><div class="text-content"><p style="padding-top: 46px;">Bespoke marble bathrooms include Waterworks fixtures, steam showers and Nanz hardware finishes.</p></div></div>
+        <div id="mirco-video-4" class="mirco-video" style="display: block;"></div>
+</div>
+</li>
+
+
+<li>
+<div id="link-container-5" class="hover-teaser  new-dev-title">
+    <div class="img-content"><img data-file-id="3404" data-org-height="360" data-org-width="640" itemprop="image" src="img/640w__walker_tower_tile5-3404.jpg"></div>
+  <div class="hover-text" style="display: none;"><div class="text-content"><p>Marketing efforts included a public exhibition celebrating Ralph Thomas Walker, along with a glossy book of the architect’s legend published and distributed by Rizzoli – an industry first.</p></div></div>
+        <div id="mirco-video-5" class="mirco-video" style="display: block;"></div>
+</div>
+</li>
+
+
+<li>
+<div id="link-container-6" class="hover-teaser  new-dev-title">
+  <a href="//corenyc.com/culture/2012/03/walker-tower-previewed-in-the-new-york-times/">  <div class="img-content"><img data-file-id="3406" data-org-height="360" data-org-width="640" itemprop="image" src="img/640w__walker_tower_tile6-3406.jpg"></div>
+  <div class="hover-text" style="display: none;"><div class="text-content"><p>As Shaun Osher predicted to <i>The New York Times</i> in 2012, Walker Tower realized a downtown record price of $10,000 per square foot by 2014.</p></div></div>
+      </a>
+      <div id="mirco-video-6" class="mirco-video" style="display: block;"></div>
+</div>
+</li>
+
+
+            <div class="clearfix">&nbsp;</div>
+        </ul>
+    </section>
+
+
+
+<section class="listings">
+    <style>
+    .listings {
+        border-top:3px solid #000;
+        padding-top:15px;
+    }
+
+    </style>
+    <style>
+    #lower-tab-menu-2 {display:none;}
+    .tab-content-2 {display:none;}
+    </style>
+    <style>
+    #lower-tab-menu-4 {display:none;}
+    .tab-content-4 {display:none;}
+    </style>
+    <style>
+    #additional-sales {display:none;}
+    </style>
+    <style>
+    #represented-buyer {display:none;}
+    </style>
+<div> 
+    <div class="inner">
+        <ul class="tab-menu">
+            <a href="javascript:scrollToAnchor('exclusives')"><li id="lower-tab-menu-1">Active</li></a>
+            <a href="javascript:scrollToAnchor('in-contract')"><li id="lower-tab-menu-2">In Contract</li></a>
+            <a href="javascript:scrollToAnchor('recently-sold')"><li id="lower-tab-menu-3">Closed</li></a>
+            <div class="clearfix">&nbsp;</div>
+        </ul>
+    </div>
+</div>
+
+    <div class="tab-content-1">
+       <a name="exclusives">&nbsp;</a>
+        <h4>Active</h4>
+        <ul class="listings-list">
+            <li class="person-listing-teaser listing-teaser"> 
+
+  <a href="212-west-18th-street-9d">
+    <div class="img-container"><img src="img/s3.amazonaws.com-core-listing-images-2017-01-24-212_west_18th_street_9d_01-2890.jpg" alt="212 West 18th Street, 9D"></div>
+    </a>
+    <p class="listing-prize">$7,950,000</p>
+    <p class="listing-name">212 West 18th Street, 9D</p>
+    <p class="listing-contact">Condo <span class="right">1,730 SF</span></p>
+    <p class="listing-info">2 Beds / 2 Baths</p>  
+</li>
+        </ul>
+    </div>
+    <div class="tab-content-2">
+        <a name="in-contract">&nbsp;</a>
+        <h4>In Contract</h4>
+        <ul class="listings-list">
+                     </ul>
+    </div>
+    <div class="tab-content-3">
+        <a name="recently-sold">&nbsp;</a>
+        <h4>Closed</h4>
+        <ul class="listings-list">
+        <li class="person-listing-teaser listing-teaser"> 
+
+  <a href="closed/212-west-18th-street-10d">
+    <div class="img-container"><img src="img/img.streeteasy.com-nyc-image-89-47037189.jpg" alt="212 West 18th Street, 10D"></div>
+    </a>
+    <p class="listing-prize">$14,000,000</p>
+    <p class="listing-name">212 West 18th Street, 10D</p>
+    <p class="listing-contact">Condo <span class="right">3,199 SF</span></p>
+    <p class="listing-info">3 Beds / 3.5 Baths</p>  
+</li>
+<li class="person-listing-teaser listing-teaser"> 
+
+  <a href="closed/212-west-18th-street-15c">
+    <div class="img-container"><img src="img/media.realplusonline.com-core-3267688-212_west_18th_street_17d_r_01.jpg" alt="212 West 18th Street, 15C"></div>
+    </a>
+    <p class="listing-prize">$13,250,000</p>
+    <p class="listing-name">212 West 18th Street, 15C</p>
+    <p class="listing-contact">Condo <span class="right">3,581 SF</span></p>
+    <p class="listing-info">4 Beds / 4.5 Baths</p>  
+</li>
+<li class="person-listing-teaser listing-teaser"> 
+
+  <a href="closed/212-west-18th-street-ph8">
+    <div class="img-container"><img src="img/media.realplusonline.com--CORE-9382819-212_West_18th_Street_11E_01.jpg" alt="212 West 18th Street, PH8"></div>
+    </a>
+    <p class="listing-prize">$12,495,000</p>
+    <p class="listing-name">212 West 18th Street, PH8</p>
+    <p class="listing-contact">Condo <span class="right">3,071 SF</span></p>
+    <p class="listing-info">3 Beds / 4 Baths</p>  
+</li>
+ 
+        </ul>
+    </div>    
+    
+</section>
+
+
+<script>
+  $(document).ready(function(){ 
+    if(!isTouch){
+      $('.hover-teaser').hover(function() {
+        if(windowWidth > 550){
+          $('.hover-text').hide();
+          $(this).find('.hover-text').show();   
+          var hTextHeight = $(this).find('p').height();
+          var hTextParentHeight = $(this).find('.hover-text').parent().height();
+          
+          if(hTextParentHeight == 0){
+            hTextParentHeight = $(this).find('.hover-text').parent().parent().height();
+          }
+          myTrace(hTextHeight);
+          myTrace(hTextHeight+' '+hTextParentHeight);
+          
+          var targetHeight = ((hTextParentHeight-30)/2)-(hTextHeight/2);
+          $(this).find('p').css({'padding-top':+targetHeight+'px'});
+          }
+      },
+       function() {
+         if(windowWidth > 750){
+          $('.hover-text').hide();    
+         }
+      });
+    }
+    
+    
+  }); 
+</script>
+
+<!-- application/views/layout/footer-viewelement.phtml -->
+</main>
+
+
+<!--       footer start                -->
+<footer>
+  <div class="inner">
+   <!--
+    @TODO reove once xl-site is launched
+    -->
+    <style>
+        /**/
+               .addresses {
+                   width: 100%;
+                   margin-top: 15px;
+               }
+
+               .addresses p{
+                   width: 25%;
+                   float: left;
+                   margin-bottom: 25px;
+               }
+               @media only screen and (max-width: 768px) {
+                   .addresses p{
+                       width: 50%;
+                       float: left;
+                   }
+               }
+
+        #footer-page-functions {
+            display: none;
+        }
+    </style>
+    
+    <div class="addresses">
+        <p>
+            <b class="headTel">PADMINI JAIN</b><br>
+            
+            <a class="tel" href="tel:829-129-3889">829-129-3889</a><br>
+        </p>
+
+       <p>
+            <b class="headTel">Harshit Desai</b><br>
+            
+            <a class="tel" href="tel:983-379-9312">983-379-9312</a><br>
+        </p>
+        <p>
+            <b class="headTel">Yash Sharma</b><br>
+            
+            <a class="tel" href="tel:981-906-5421">981-906-5421</a><br>
+        </p>
+        <p>
+            <b class="headTel">Yash Sharma</b><br>
+            
+            <a class="tel" href="tel:989-279-9353">989-279-9353</a><br>
+        </p>
+
+               <div class="clearfix"> &nbsp;</div>
+
+    </div>
+
+    
+<section class="location">
+  <h3>FIND US</h3>
+  <p class="adr">4 B/26 Wellington, Shastri Nagar <br>
+Neighbourhood - Andheri West</p>
+
+<div class="elementor-icon-wrapper">
+      <a class="elementor-icon elementor-animation-bounce-in" href="https://www.google.co.il/maps?source=tldsi&amp;hl=ru" target="_blank">
+        <i class="fa fa-map-marker"></i>
+      </a>
+    </div>
+</section>
+
+</div>
+
+<div class="inner">
+    <br><br>
+    <p class="light">
+        All data and information set forth on this website regarding real property, for sale, purchase, rental and/or financing, are from sources regarded as reliable. No warranties are made as to the accuracy of any descriptions and/or other details and such information is subject to errors, omissions, changes of price, tenancies, commissions, prior sales, leases or financing, or withdrawal without notice. Square footages are approximate and may be verified by consulting a professional architect or engineer. All rights as to photographs and graphics are reserved to REAL DEAL HOUSING PRIVATE LIMITED. Customers should seek advice and proper legal counsel with respect to all closing costs, timing considerations, financing options, default provisions, zoning implications, renovation considerations and appropriate transfer taxes. Real Deal Housing PVT. LTD. represents and has a fiduciary duty to those sellers with respect to Real Deal's exclusives. Real Deal Housing PVT. LTD. may act as a dual agent if another agent of Real Deal Housing represents the buyer or tenant. Real Deal Housing represents the buyer or tenant when showing the exclusive listings of other real estate brokerage firms.
+
+
+    </p>
+
+    <div class="footer-lower-row">
+                <div id="bottom-ad">
+            <br><br>
+        </div>
+        
+        <div id="footer-center-info">
+           
+            Copyright © 2017 Real Deal Housing</div>
+
+        <div id="partner-logo">
+            <a target="_blank" href="#">
+            </a>
+        </div>
+    </div>
+</div></footer>
+</div><!-- end pagebody -->
+<div id="templates-container" class="hidden"></div>
+
+<div id="overlay-modal">
+    <div class="overlay-modal-inner">
+        <div class="modal-close-handle">
+            <div class="modal-close-handle-inner">
+                <a class="button large-button" href="javascript:hideModal()">
+                    X
+                    <!--<span class="state-hover">
+                        <img class="mouse-out" src="public/app-assets/img/modal-close-x.png" />
+                        <img class="mouse-over" src="<public/app-assets/img/modal-close-x-hover.png" />
+                    </span>
+                    -->
+                </a>
+            </div>
+
+        </div>
+        <div id="overlay-modal-spinner">
+            <div class="spinner-wrap">
+                <div class="sprite-spinner">
+                    <img src="public/app-assets/img/spinner.gif">
+                </div>
+            </div>
+        </div>
+        <div class="content-target">
+        </div>
+    </div>
+</div>
+
+
+  <script>
+    $(window).load(function () {
+        trackRenderTime(14);
+    });
+  </script>
+  
+</body>
+</html>

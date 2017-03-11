@@ -24,6 +24,60 @@
   <link rel="stylesheet" type="text/css" href="css/globals.css">
 
   <link rel="stylesheet" type="text/css" href="css/responsive.css">
+  <script type="text/javascript">     
+  var baseUrl = 'http://corenyc.com/';
+  var uId = 'standardpage-25';
+  var currentUrl = 'developments';
+  var spinnerLink = "public/app-assets/img/spinner.gif";
+  
+  
+   
+  
+  $(document).ready(function(){   
+      var clone = $('#sticky-menu .inner').clone()
+      $('#sticky-menu-target').append(clone);
+
+
+            var mainNavHtml = $('#main-nav').html()
+
+            $('#mobile-nav').html(mainNavHtml);
+            executeAsInterval('navSticker');
+      truncatePager();
+      addPlayerButtonsToVideos();
+
+
+  });
+
+  $(window).load(function(){
+    
+  });
+
+
+  
+  function navSticker(){
+    if( $('#sticky-menu').length > 0){
+      scrollTop = $(window).scrollTop();
+      //myTrace(scrollTop); 
+      
+      var position = $('#sticky-menu').offset(); 
+      var topPosition = position.top; 
+      var clipPoint = scrollTop-topPosition+160;
+            //myTrace('clipPoint '+clipPoint);  
+      
+      //var clippingPoint = $('#sticky-menu').attr('data-clipping-point');
+      
+      if(clipPoint > 0 && windowWidth > 600){
+        ///$('#sticky-menu-target').fadeIn(); 
+        $('#sticky-menu-target').slideDown();
+      }
+      else{
+        //$('#sticky-menu').fadeOut;
+        $('#sticky-menu-target').slideUp(); 
+      }
+    }
+  }
+  
+  </script>
 </head>
 
 
@@ -118,8 +172,9 @@
 <div id="listing-filter-toggle" class="hidden visible-xs visible-sm visible-md"></div>      
 
 <div id="sticky-menu-target">
-
-</div></header>
+<div class="inner"></div>
+</div>
+</header>
 <!--                 header end                 -->
 
 <main>  <h1 class="other-type-header">Developments</h1>
@@ -147,7 +202,7 @@
   <a name="properties">&nbsp;</a>
   <ul class="nd-property-list">
     <li>
-    <a href="#">
+    <a href="king-salivan.html">
     <img data-file-id="5249" data-org-height="1020" data-org-width="1600" itemprop="image" src="img/640_454c__113a_king_street_th_07-5249.jpg">    </a>
     <p>King &amp; Sullivan</p>      
 </li><li>
