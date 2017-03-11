@@ -2473,6 +2473,11 @@ margin-right: 5px;
 	margin-right:1%;	
 	overflow:hidden;
 }
+
+.teaser-small li {
+	
+	width:32%;
+}
 section.location {
     text-align: center;
     position: relative;
