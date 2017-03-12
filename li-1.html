@@ -42,7 +42,7 @@
 </div>
 
 
-<a id="logo-wrapper" href="#"><img id="logo" src="img/logoSvg.svg" alt="Real Deal"></a>
+<a id="logo-wrapper" href="#"><img id="logo" src="img/logo200.png" alt="Real Deal"></a>
 <nav id="mobile-nav" class="main-nav">
     
 <ul class="level-1">
@@ -143,7 +143,7 @@
         
     <div class="listing-single-info ">
         
-      <div class="listing-single-agents">
+      <div class="listing-single-agents w28">
                       
         <ul class="listing-single-agents-list"> 
           <li>
@@ -222,7 +222,7 @@
                   
       </div>
 
-      <div class="listing-single-general">
+      <div class="listing-single-general w30">
         <h4>LOCATION</h4>
         <p>
           464 Greenwich Street<br>
@@ -285,13 +285,41 @@
 
       </div>
       
-      <div class="listing-single-details">
+      <div class="listing-single-details w50">
       
         <h4>DETAILS</h4>
         
         <ul id="listing-details" class="tabular-list">
 
-          <li><span class="list-label">Price</span><span class="list-content">$27,500,000</span></li><li><span class="list-label">Type</span><span class="list-content">Townhouse</span></li><li><span class="list-label">Beds</span><span class="list-content">5</span></li><li><span class="list-label">Baths</span><span class="list-content">5.5</span></li><li><span class="list-label">RET</span><span class="list-content">   $35,220</span></li><li><span class="list-label">Approx SF</span><span class="list-content">9,000 SF</span></li>                   
+          <li class="name-cont"><span class="list-label">Price</span><span class="list-content ">2,500,000 NIR</span></li>
+          <li class="descript-cont"><span class="list-label">Beds</span><span class="list-content">5</span></li>
+
+          <li class="name-cont"><span class="list-label">Baths</span><span class="list-content">5.5</span></li>
+          <li class="descript-cont"><span class="list-label">Type</span><span class="list-content">Townhouse</span></li>
+          
+          
+        <li class="name-cont"><span class="list-label">Locality</span><span class="list-content">   Dallas</span></li>
+        <li class="descript-cont"><span class="list-label">Sub Locality</span><span class="list-content">Dallas</span></li>
+
+        <li class="name-cont"><span class="list-label">Possession</span><span class="list-content ">Poss</span></li>
+        <li class="descript-cont lastLi"><span class="list-label">No. of Parkings</span><span class="list-content">234</span></li>
+
+        <h4 style="clear: both;">Approx Square Footage</h4>
+          <div id="listing-specifics">
+            <table>
+            <colgroup>
+              <col class="col1">
+              <col class="col2">
+              <col class="col3">
+              <col class="col4">
+            </colgroup>
+            <tbody><tr><td>Some text</td><td>Some text2</td></tr>            </tbody></table>
+
+          </div>
+        <li class="name-cont"><span class="list-label">Built Up Area</span><span class="list-content">156 sq</span></li>
+        <li class="descript-cont"><span class="list-label">Carpet Area</span><span class="list-content">140 sq</span></li>
+
+
         </ul>
         <div class="clearfix">&nbsp;</div>
         
@@ -306,147 +334,26 @@
             </colgroup>
             <tbody><tr><td>Elevator</td><td>Garden</td></tr>            </tbody></table>
 
-          </div>
-        
-                <div class="mortgage-calc">
-                  <!--
-          <a href="https://www.agentsite.com/rc/citimortgage/landing.aspx?ID=CORE&PT=general2&ISN=13897&ISL=00101" target='_blank' >
-                      <img src='public/app-assets/img/citilogo.png' /> 
-                  </a>
-                  -->
-                    <div class="mortgage-calc-bottom">
-                    <a href="javascript:showMortgageCalulatorInterface()" class="button calc-mortgage" onclick="ga('send','event','listing','mortgage calculator click','464 Greenwich Street')">MORTGAGE CALCULATOR</a><span class="asterix hidden">*</span>
-                  </div>
-                </div>
-        <script>
-  $(document).ready(function () {
-    calculate();      
-  });
-        
-  function showMortgageCalulatorInterface(num) {
-    $('#mortgage-calulator-interface').slideToggle();
-  }
-        
-  function formatCurrency(num) {
-      num = num.toString().replace(/\$|\,/g,'');
-      if(isNaN(num))
-      num = "0";
-      sign = (num == (num = Math.abs(num)));
-      num = Math.floor(num*100+0.50000000001);
-      cents = num%100;
-      num = Math.floor(num/100).toString();
-      if(cents<10)
-      cents = "0" + cents;
-      for (var i = 0; i < Math.floor((num.length-(1+i))/3); i++)
-      num = num.substring(0,num.length-(4*i+3))+','+
-      num.substring(num.length-(4*i+3));
-      return (num);
-  }
-  
-  function calculate(){
-              
-      var L,P,n,c,dp;
-      L = parseInt($("#mcPrice").val());
-      
-      n = parseInt($("#mcTerm").val()) * 12;
-    
-      c = parseFloat($("#mcRate").val())/1200;
-      dp = 1 - parseFloat($("#mcDown").val())/100;
-      
-      amountfinanced = L*dp;
-      //alert(amountfinanced);
-      downpayment = L - amountfinanced;
-        
-      L = L * dp;
-      P = (L*(c*Math.pow(1+c,n)))/(Math.pow(1+c,n)-1);
-      
-      
-      if(!isNaN(P)) 
-      {
-        $("#monthly_payment").html("$"+formatCurrency(P.toFixed(2)));
-        $("#down_payment").html("$"+formatCurrency(downpayment));
-        $("#amount_financed").html("$"+formatCurrency(amountfinanced));
-      }     
-  };
-  
-</script>
+          </div> 
 
-<div id="mortgage-calulator-interface" class="hidden">
-    <h4>Mortgage Calculator</h4>
-    <p>
-    This mortgage calculator can be used to figure out monthly payments of a home mortgage loan, based on the home's sale price, the term of the loan desired, buyer's down payment percentage, and the loan's interest rate.<br><br>         
-    </p>
-    <table class="standard mortgage-calulator">
-      <tbody><tr>
-        <th colspan="2">Purchase &amp; Financing Information</th>
-      </tr>
-      <tr>
-        <td align="left" style="width:44%">Price:</td>
-        <td> 
-                <input type="text" name="mcPrice" id="mcPrice" class="mortgageField" value="27500000">(in dollars)
-              </td>
-              
-      </tr>
-      <tr>
-        <td align="left">Downpayment:</td>
-        <td><input type="text" name="mcDown" id="mcDown" class="mortgageField" value="15">%</td>
-      </tr>
-      <tr>
-        <td align="left">Length of Mortgage:</td>
-        <td> <input type="text" name="mcTerm" id="mcTerm" class="mortgageField" value="30">years</td>
-      </tr>
-      <tr>
-        <td align="left">Annual Interest Rate:</td>
-        <td> <input type="text" name="mcRate" id="mcRate" class="mortgageField" value="4.5">%</td>
-      </tr>
-    
-      <tr>
-        <td>&nbsp;</td>
-        <td><a href="javascript:calculate()" class="button">
-                    <div id="inquire_link" class="input-wrap">                        
-                        <span class="label"> Calculate</span>
-                    </div>
-                    </a>
-                 <br><br>   
-    </td>
-      </tr>
-        <tr>
-          <th colspan="2">Mortgage Payment Information</th>
-        </tr>
-        <tr>
-          <td align="left">Down Payment:</td>
-          <td id="down_payment">$4,125,000</td>
-        </tr>
-        <tr>
-          <td align="left">Amount Financed:</td>
-          <td id="amount_financed">$23,375,000</td>
-        </tr>
-        <tr>
-          <td align="left">Monthly Payment:</td>
-          <td id="monthly_payment">$118,437</td>
-        </tr>
-        </tbody></table>    
-      <p class="light hidden">
-    * Disclaimer: This mortgage calculator is owned and maintained by CORE Group Marketing, LLC.
-    </p>
-</div>                
+
                                 
-        <h4 class="featured-press">PRESS</h4>
+        <h4 class="featured-press">Articles</h4>
         <ul class="press-list">
           
-<li id="press-teaser-3640" data-index="0" style="display: list-item;">
+<li id="press-teaser-3640" data-index="0" style="display: list-item;font-weight: 100;">
     <em>AM New York</em>, September 13, 2016<br>
     <a href="news/nyfw-nyc-homes" class="title">NYFW &amp; NYC Homes</a>
         <a class="button" target="_blank" href="#">PDF</a>
        
 </li>
-<li id="press-teaser-3472" data-index="0" style="display: list-item;">
+<li id="press-teaser-3472" data-index="0" style="display: list-item;font-weight: 100;">
     <em>Town &amp; Country</em>, May 03, 2016<br>
     <a href="news/jcrew-ceo-mickey-drexler-is-selling-his-tribeca-townhouse-for-242995-million" class="title">J.Crew CEO Mickey Drexler Is Selling His Tribeca Townhouse for $29.95 Million</a>
         <a class="button" target="_blank" href="#">PDF</a>
        
 </li>
-<li id="press-teaser-3468" data-index="0" style="display: list-item;">
+<li id="press-teaser-3468" data-index="0" style="display: list-item;font-weight: 100;">
     <em>The Wall Street Journal</em>, May 02, 2016<br>
     <a href="news/j-crew-e2-80-99s-mickey-drexler-lists-tribeca-townhouse-for-242995-million" class="title">J. Crew’s Mickey Drexler Lists Tribeca Townhouse for $29.95 Million</a>
         <a class="button" target="_blank" href="#">PDF</a>
@@ -509,7 +416,7 @@
             <a class="tel" href="tel:981-906-5421">981-906-5421</a><br>
         </p>
         <p>
-            <b class="headTel">Yash Sharma</b><br>
+            <b class="headTel">Harsh Banthiya</b><br>
             
             <a class="tel" href="tel:989-279-9353">989-279-9353</a><br>
         </p>
@@ -525,7 +432,7 @@
 Neighbourhood - Andheri West</p>
 
 <div class="elementor-icon-wrapper">
-      <a class="elementor-icon elementor-animation-bounce-in" href="https://www.google.co.il/maps?source=tldsi&amp;hl=ru" target="_blank">
+      <a class="elementor-icon elementor-animation-bounce-in" href="https://www.google.co.in/maps/place/Real+Deal+Housing+Pvt+Ltd/@19.1382937,72.8289305,15z/data=!4m5!3m4!1s0x0:0xc4a69af1fd7e2859!8m2!3d19.1382937!4d72.8289305" target="_blank">
         <i class="fa fa-map-marker"></i>
       </a>
     </div>

@@ -331,13 +331,6 @@ function showListingMessage(){
   var html = $('#no-result-general').html();
   var lastNbhGroup = $('#lastNbhGroup').val();
 
-
-
-  // if($('.no-result-brooklyn-tile').length <= 0){
-  //   html = $('#no-result-general').html();
-  //   $('#ajax-return-listings').append(html);
-  // }
-  
 }
 
 // to prevent the first update from triggering the event.
@@ -504,10 +497,10 @@ function initListingFilters() {
     if (maxtext == maxprice) {
       maxtext = maxpricetext;
     } else {
-      maxtext = "$" + formatCurrency(maxtext);
+      maxtext = formatCurrency(maxtext) + " INR";
     }
 
-    $('#amount').html("$" + formatCurrency(values[0]) + " to " + maxtext);
+    $('#amount').html(formatCurrency(values[0]) + " INR" + " to " + maxtext);
     $('[name=amountmin]').val(values[0]);
     $('[name=amountmax]').val(values[1]);
     filterListings();
@@ -820,7 +813,7 @@ function flushPlaceHolders(){
 <div class="slider">
             <div id="slider-amount" class="noUi-target noUi-ltr noUi-horizontal">
             </div>
-            <p class="slidervalue" id="amount">$0 to No Maximum</p>
+            <p class="slidervalue" id="amount">0 INR to No Maximum</p>
             <input name="amountmin" type="hidden" value="0.00">
             <input name="amountmax" type="hidden" value="10000000.00">
   </div>
@@ -839,12 +832,6 @@ function flushPlaceHolders(){
             <input name="bathsmax" type="hidden" value="7">
         </div>
 
-        <div class="search-balconies noheadline">
-            <label style="text-transform: uppercase;">Number of balconies
-                <input type="number" name="forsale" value="yes" id="balconies" min="0" max="3">
-                </label>
-        </div>
-
         <div class="search-checkoption noheadline">
             <label>
                 <input type="checkbox" name="forsale" checked="checked" value="yes" id="forsale">
@@ -861,18 +848,11 @@ function flushPlaceHolders(){
                 <input type="radio" name="availability" value="yes" id="forsale">
                 Under Construction</label>
         </div>
-        <div class="search-checkoption noheadline" >
+        <div class="search-checkoption noheadline marginB" >
             <label>
                 <input type="radio" name="availability" checked="checked" value="yes" id="rentals">
                 Ready to move in</label>
         </div>
-
-
-        <h4 style="margin-top: 60px;">Built Up Area(in sq feet)</h4>
-        <input type="number" class="txt" value="" id="listings_search_body_input">
-
-        <h4>Carpet Area(in sq feet)</h4>
-        <input type="number" class="txt" value="" id="listings_search_body_input">
 
         <h4>Additional Features</h4>
         <input type="number" class="txt" value="" id="listings_search_body_input">
@@ -881,7 +861,166 @@ function flushPlaceHolders(){
         <h4>Search listings by address or agent</h4>
         <input type="text" class="txt" value="" id="listings_search_body_input">
 
+        <h4>Locality</h4>
+        <input type="hidden" id="lastNbhGroup" name="lastNbhGroup" value="manhattan">
+        <div class="nbh-group-selector">
+            <ul class="nav nav-tabs">
+                <li data-group="manhattan" class="active"><a onclick="toggleNbhGroupTab(this)">Andheri West</a></li>
+                <li data-group="brooklyn"><a onclick="toggleNbhGroupTab(this)">Goregaon West </a></li>
+                <li data-group="other"><a onclick="toggleNbhGroupTab(this)">Other</a></li>
+            </ul>
+        </div>
+<br>
+        <div class="nbh-checkoptions">
+        <div class="search-checkoption" data-group="manhattan" style="display: block;">
+            <label><input id="AllNyc" type="checkbox" name="AllNyc" value="yes" class="nbh all-toggle" onclick="toggleAllNYC()">All NYC</label>
+        </div>
         
+        <div class="search-checkoption" data-group="brooklyn" style="display: none;">
+            <label><input id="AllBrooklyn" type="checkbox" name="AllBrooklyn" value="yes" class="nbh all-toggle" onclick="toggleAllOffNbh('brooklyn')">All Brooklyn</label>
+        </div>
+        <div class="search-checkoption" data-group="other" style="display: none;">
+            <label><input id="AllOther" type="checkbox" name="AllOther" value="yes" class="nbh all-toggle" onclick="toggleAllOffNbh('other')">All Other</label>
+        </div>
+        <div id="BatteryParkCityOption" class="search-checkoption" data-group="manhattan" style="display: block;">
+                    <label><input type="checkbox" name="neighborhoods[0]" value="Battery Park City" class="nbh">Battery Park City</label>
+                    </div><div class="search-checkoption" data-group="manhattan" style="display: block;">
+            <label><input id="AllManhattan" type="checkbox" name="AllManhattan" value="yes" class="nbh all-toggle" onclick="toggleAllOffNbh('manhattan')">All Manhattan</label>
+        </div><div id="ChelseaOption" class="search-checkoption" data-group="manhattan" style="display: block;">
+                    <label><input type="checkbox" name="neighborhoods[1]" value="Chelsea" class="nbh">Chelsea</label>
+                    </div><div id="EastVillageOption" class="search-checkoption" data-group="manhattan" style="display: block;">
+                    <label><input type="checkbox" name="neighborhoods[2]" value="East Village" class="nbh">East Village</label>
+                    </div><div id="FinancialDistrictOption" class="search-checkoption" data-group="manhattan" style="display: block;">
+                    <label><input type="checkbox" name="neighborhoods[3]" value="Financial District" class="nbh">Financial District</label>
+                    </div><div id="FlatironOption" class="search-checkoption" data-group="manhattan" style="display: block;">
+                    <label><input type="checkbox" name="neighborhoods[4]" value="Flatiron" class="nbh">Flatiron</label>
+                    </div><div id="GramercyParkOption" class="search-checkoption" data-group="manhattan" style="display: block;">
+                    <label><input type="checkbox" name="neighborhoods[5]" value="Gramercy Park" class="nbh">Gramercy</label>
+                    </div><div id="GreenwichVillageOption" class="search-checkoption" data-group="manhattan" style="display: block;">
+                    <label><input type="checkbox" name="neighborhoods[6]" value="Greenwich Village" class="nbh">Greenwich Village</label>
+                    </div><div id="HarlemOption" class="search-checkoption" data-group="manhattan" style="display: block;">
+                    <label><input type="checkbox" name="neighborhoods[7]" value="Harlem" class="nbh">Harlem</label>
+                    </div><div id="LongIslandCityOption" class="search-checkoption" data-group="manhattan" style="display: block;">
+                    <label><input type="checkbox" name="neighborhoods[8]" value="Long Island City" class="nbh">Long Island City</label>
+                    </div><div id="LowerEastSideOption" class="search-checkoption" data-group="manhattan" style="display: block;">
+                    <label><input type="checkbox" name="neighborhoods[9]" value="Lower East Side" class="nbh">Lower East Side</label>
+                    </div><div id="MiddleWestSideOption" class="search-checkoption" data-group="manhattan" style="display: block;">
+                    <label><input type="checkbox" name="neighborhoods[10]" value="Middle West Side" class="nbh">Midtown West</label>
+                    </div><div id="MiddleEastsideOption" class="search-checkoption" data-group="manhattan" style="display: block;">
+                    <label><input type="checkbox" name="neighborhoods[11]" value="Middle East side" class="nbh">Midtown East</label>
+                    </div><div id="MurrayHill/KipsBayOption" class="search-checkoption" data-group="manhattan" style="display: block;">
+                    <label><input type="checkbox" name="neighborhoods[12]" value="Murray Hill/Kips Bay" class="nbh">Murray Hill/Kips Bay</label>
+                    </div><div id="NohoOption" class="search-checkoption" data-group="manhattan" style="display: block;">
+                    <label><input type="checkbox" name="neighborhoods[13]" value="Noho" class="nbh">Noho</label>
+                    </div><div id="NolitaOption" class="search-checkoption" data-group="manhattan" style="display: block;">
+                    <label><input type="checkbox" name="neighborhoods[14]" value="Nolita" class="nbh">Nolita</label>
+                    </div><div id="SohoOption" class="search-checkoption" data-group="manhattan" style="display: block;">
+                    <label><input type="checkbox" name="neighborhoods[15]" value="Soho" class="nbh">Soho</label>
+                    </div><div id="TribecaOption" class="search-checkoption" data-group="manhattan" style="display: block;">
+                    <label><input type="checkbox" name="neighborhoods[16]" value="Tribeca" class="nbh">Tribeca</label>
+                    </div><div id="UpperEastSideOption" class="search-checkoption" data-group="manhattan" style="display: block;">
+                    <label><input type="checkbox" name="neighborhoods[17]" value="Upper East Side" class="nbh">Upper East Side</label>
+                    </div><div id="UpperManhattanOption" class="search-checkoption" data-group="manhattan" style="display: block;">
+                    <label><input type="checkbox" name="sect[0]" value="Upper Manhattan" class="nbh">Upper Manhattan</label>
+                    </div><div id="UpperWestSideOption" class="search-checkoption" data-group="manhattan" style="display: block;">
+                    <label><input type="checkbox" name="neighborhoods[18]" value="Upper West Side" class="nbh">Upper West Side</label>
+                    </div><div id="WestVillageOption" class="search-checkoption" data-group="manhattan" style="display: block;">
+                    <label><input type="checkbox" name="neighborhoods[19]" value="West Village" class="nbh">West Village</label>
+                    </div><div id="BronxOption" class="search-checkoption" data-group="other" style="display: none;">
+                    <label><input type="checkbox" name="sect[1]" value="Bronx" class="nbh">Bronx</label>
+                    </div><div id="QueensOption" class="search-checkoption" data-group="other" style="display: none;">
+                    <label><input type="checkbox" name="sect[2]" value="Queens" class="nbh">Queens</label>
+                    </div><div id="StatenIslandOption" class="search-checkoption" data-group="other" style="display: none;">
+                    <label><input type="checkbox" name="sect[3]" value="Staten Island" class="nbh">Staten Island</label>
+                    </div><div id="OtherOption" class="search-checkoption" data-group="other" style="display: none;">
+                    <label><input type="checkbox" name="sect[4]" value="Other" class="nbh">Other</label>
+                    </div><div id="BayRidgeOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[20]" value="Bay Ridge" class="nbh">Bay Ridge</label>
+                    </div><div id="BedfordStuyvesantOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[21]" value="Bedford Stuyvesant" class="nbh">Bedford Stuyvesant</label>
+                    </div><div id="BensonhurstOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[22]" value="Bensonhurst" class="nbh">Bensonhurst</label>
+                    </div><div id="BoerumHillOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[23]" value="Boerum Hill" class="nbh">Boerum Hill</label>
+                    </div><div id="BoroughParkOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[24]" value="Borough Park" class="nbh">Borough Park</label>
+                    </div><div id="BrightonBeachOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[25]" value="Brighton Beach" class="nbh">Brighton Beach</label>
+                    </div><div id="BrooklynHeightsOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[26]" value="Brooklyn Heights" class="nbh">Brooklyn Heights</label>
+                    </div><div id="BrooklynNavyYardOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[27]" value="Brooklyn Navy Yard" class="nbh">Brooklyn Navy Yard</label>
+                    </div><div id="BrownsvilleOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[28]" value="Brownsville" class="nbh">Brownsville</label>
+                    </div><div id="BushwickOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[29]" value="Bushwick" class="nbh">Bushwick</label>
+                    </div><div id="CanarsieOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[30]" value="Canarsie" class="nbh">Canarsie</label>
+                    </div><div id="CarrollGardensOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[31]" value="Carroll Gardens" class="nbh">Carroll Gardens</label>
+                    </div><div id="ClintonHillOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[32]" value="Clinton Hill" class="nbh">Clinton Hill</label>
+                    </div><div id="CobbleHillOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[33]" value="Cobble Hill" class="nbh">Cobble Hill</label>
+                    </div><div id="ColumbiaWaterfrontOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[34]" value="Columbia Waterfront" class="nbh">Columbia Waterfront</label>
+                    </div><div id="CrownHeightsOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[35]" value="Crown Heights" class="nbh">Crown Heights</label>
+                    </div><div id="DitmasParkOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[36]" value="Ditmas Park" class="nbh">Ditmas Park</label>
+                    </div><div id="DowntownBrooklynOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[37]" value="Downtown Brooklyn" class="nbh">Downtown Brooklyn</label>
+                    </div><div id="DumboOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[38]" value="Dumbo" class="nbh">Dumbo</label>
+                    </div><div id="DykerHeightsOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[39]" value="Dyker Heights" class="nbh">Dyker Heights</label>
+                    </div><div id="EastFlatbushOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[40]" value="East Flatbush" class="nbh">East Flatbush</label>
+                    </div><div id="EastNYOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[41]" value="East NY" class="nbh">East NY</label>
+                    </div><div id="FlatbushOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[42]" value="Flatbush" class="nbh">Flatbush</label>
+                    </div><div id="FortGreeneOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[43]" value="Fort Greene" class="nbh">Fort Greene</label>
+                    </div><div id="GowanusOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[44]" value="Gowanus" class="nbh">Gowanus</label>
+                    </div><div id="GravesendOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[45]" value="Gravesend" class="nbh">Gravesend</label>
+                    </div><div id="GreenpointOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[46]" value="Greenpoint" class="nbh">Greenpoint</label>
+                    </div><div id="GreenwoodOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[47]" value="Greenwood" class="nbh">Greenwood</label>
+                    </div><div id="KensingtonOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[48]" value="Kensington" class="nbh">Kensington</label>
+                    </div><div id="LeffertsGardensOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[49]" value="Lefferts Gardens" class="nbh">Lefferts Gardens</label>
+                    </div><div id="ManhattanBeachOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[50]" value="Manhattan Beach" class="nbh">Manhattan Beach</label>
+                    </div><div id="MidwoodOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[51]" value="Midwood" class="nbh">Midwood</label>
+                    </div><div id="MillBasinOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[52]" value="Mill Basin" class="nbh">Mill Basin</label>
+                    </div><div id="ParkSlopeOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[53]" value="Park Slope" class="nbh">Park Slope</label>
+                    </div><div id="Prospect-LeffertsGardensOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[54]" value="Prospect-Lefferts Gardens" class="nbh">Prospect-Lefferts Gardens</label>
+                    </div><div id="ProspectHeightsOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[55]" value="Prospect Heights" class="nbh">Prospect Heights</label>
+                    </div><div id="ProspectParkSouthOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[56]" value="Prospect Park South" class="nbh">Prospect Park South</label>
+                    </div><div id="RedHookOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[57]" value="Red Hook" class="nbh">Red Hook</label>
+                    </div><div id="SeaGateOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[58]" value="Sea Gate" class="nbh">Sea Gate</label>
+                    </div><div id="SheepsheadBayOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[59]" value="Sheepshead Bay" class="nbh">Sheepshead Bay</label>
+                    </div><div id="SunsetParkOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[60]" value="Sunset Park" class="nbh">Sunset Park</label>
+                    </div><div id="VinegarHillOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[61]" value="Vinegar Hill" class="nbh">Vinegar Hill</label>
+                    </div><div id="WilliamsburgOption" class="search-checkoption" data-group="brooklyn" style="display: none;">
+                    <label><input type="checkbox" name="neighborhoods[62]" value="Williamsburg" class="nbh">Williamsburg</label>
+                    </div>    </div>
 
         <!--
         <div class="search-checkoption ">
@@ -942,7 +1081,7 @@ function flushPlaceHolders(){
     <div class="img-container">
     <img src="img/listing-img/media.realplusonline.com--CORE-14652719-205_East_92nd_Street_37C_01.jpg" alt="464 Greenwich Street"></div>
   </a>
-    <p class="listing-prize">$27,500,000</p>
+    <p class="listing-prize">27,500,000 INR</p>
     <p class="listing-name">464 Greenwich Street</p>
     <p class="listing-info">5 Beds / 5.5 Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -952,7 +1091,7 @@ function flushPlaceHolders(){
   <a href="23-east-22nd-street-ph55-56">
     <div class="img-container"><img src="img/listing-img/media.realplusonline.com--CORE-16114917-936A_Lafayette_Avenue_3_01.jpg" alt="23 East 22nd Street, PH55/56"></div>
   </a>
-    <p class="listing-prize">$26,950,000</p>
+    <p class="listing-prize">26,950,000 INR</p>
     <p class="listing-name">23 East 22nd Street, PH55/56</p>
     <p class="listing-info">5 Beds / 5.5 Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -962,7 +1101,7 @@ function flushPlaceHolders(){
   <a href="38-prince-street">
     <div class="img-container"><img src="img/listing-img/s3.amazonaws.com-core-email-marketing-email_marketing-core-custom_listings-16001_Collins_Ave_3005_FL_33160_01.jpg" alt="38 Prince Street"></div>
   </a>
-    <p class="listing-prize">$25,000,000</p>
+    <p class="listing-prize">25,000,000 INR</p>
     <p class="listing-name">38 Prince Street</p>
     <p class="listing-info">7 Beds / 7.5 Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -972,7 +1111,7 @@ function flushPlaceHolders(){
   <a href="74-bank-street">
     <div class="img-container"><img src="img/listing-img/s3.amazonaws.com-core-listing-images-2016-08-25-220_west_111th_street_2b_01-757.jpg" alt="74 Bank Street"></div>
   </a>
-    <p class="listing-prize">$24,500,000</p>
+    <p class="listing-prize">24,500,000 INR</p>
     <p class="listing-name">74 Bank Street</p>
     <p class="listing-info">5 Beds / 3.5 Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -982,7 +1121,7 @@ function flushPlaceHolders(){
   <a href="140-franklin-street-5b">
     <div class="img-container"><img src="img/listing-img/s3.amazonaws.com-core-listing-images-2016-08-24-140_west_71st_street_8g_01-730.jpg" alt="140 Franklin Street, 5B"></div>
   </a>
-    <p class="listing-prize">$19,950,000</p>
+    <p class="listing-prize">19,950,000 INR</p>
     <p class="listing-name">140 Franklin Street, 5B</p>
     <p class="listing-info">5 Beds / 5.5 Baths</p>
     <p class="open-house-info"><span class="label">Open House:</span><span>Wed, Mar 8th, 12:00 - 2:00 </span><br></p>    <p class="listing-contact">&nbsp;</p>
@@ -992,7 +1131,7 @@ function flushPlaceHolders(){
   <a href="70-laight-street">
     <div class="img-container"><img src="img/listing-img/s3.amazonaws.com-core-listing-images-2016-08-22-332_east_77th_street_14_01-676.jpg" alt="70 Laight Street"></div>
   </a>
-    <p class="listing-prize">$19,000,000</p>
+    <p class="listing-prize">19,000,000 INR</p>
     <p class="listing-name">70 Laight Street</p>
     <p class="listing-info">5 Beds / 6 Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -1002,7 +1141,7 @@ function flushPlaceHolders(){
   <a href="100-eleventh-avenue-19thfloor">
     <div class="img-container"><img src="img/listing-img/s3.amazonaws.com-core-listing-images-2016-07-22-425_west_53rd_street_ph3_01-306.jpg" alt="100 Eleventh Avenue, 19THFLOOR"></div>
   </a>
-    <p class="listing-prize">$18,800,000</p>
+    <p class="listing-prize">18,800,000 INR</p>
     <p class="listing-name">100 Eleventh Avenue, 19THFLOOR</p>
     <p class="listing-info">6 Beds / 6.5 Baths</p>
     <p class="open-house-info"><span class="label">Open House:</span><span>Sun, Mar 12th, 12:00 - 1:30 </span><br></p>    <p class="listing-contact">&nbsp;</p>
@@ -1012,7 +1151,7 @@ function flushPlaceHolders(){
   <a href="87-leonard-street-penthouseb">
     <div class="img-container"><img src="img/listing-img/media.realplusonline.com--CORE-11287020-23_East_22nd_Street_apt8_01 (1).jpg" alt="87 Leonard Street, PENTHOUSEB"></div>
   </a>
-    <p class="listing-prize">$10,750,000</p>
+    <p class="listing-prize">10,750,000 INR</p>
     <p class="listing-name">87 Leonard Street, PENTHOUSEB</p>
     <p class="listing-info">3 Beds / 4.5 Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -1022,7 +1161,7 @@ function flushPlaceHolders(){
   <a href="25-bond-street-2e">
     <div class="img-container"><img src="img/listing-img/media.realplusonline.com--CORE-11287020-23_East_22nd_Street_apt8_01.jpg" alt="25 Bond Street, 2E"></div>
   </a>
-    <p class="listing-prize">$10,000,000</p>
+    <p class="listing-prize">10,000,000 INR</p>
     <p class="listing-name">25 Bond Street, 2E</p>
     <p class="listing-info">3 Beds / 3.5 Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -1032,7 +1171,7 @@ function flushPlaceHolders(){
   <a href="23-east-22nd-street-8fl">
     <div class="img-container"><img src="img/listing-img/media.realplusonline.com--CORE-12477096-140_Franklin_Street_5B_04 (1).jpg" alt="23 East 22nd Street, 8FL"></div>
   </a>
-    <p class="listing-prize">$9,995,000</p>
+    <p class="listing-prize">9,995,000 INR</p>
     <p class="listing-name">23 East 22nd Street, 8FL</p>
     <p class="listing-info">3 Beds / 3.5 Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -1042,7 +1181,7 @@ function flushPlaceHolders(){
   <a href="42-crosby-street-3s">
     <div class="img-container"><img src="img/listing-img/media.realplusonline.com--CORE-12477096-140_Franklin_Street_5B_04 (2).jpg" alt="42 Crosby Street, 3S"></div>
   </a>
-    <p class="listing-prize">$9,950,000</p>
+    <p class="listing-prize">9,950,000 INR</p>
     <p class="listing-name">42 Crosby Street, 3S</p>
     <p class="listing-info">3 Beds / 4 Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -1052,7 +1191,7 @@ function flushPlaceHolders(){
   <a href="42-crosby-street-2s">
     <div class="img-container"><img src="img/listing-img/media.realplusonline.com--CORE-13988676-144_Franklin_Street_building_01.jpg" alt="42 Crosby Street, 2S"></div>
   </a>
-    <p class="listing-prize">$9,700,000</p>
+    <p class="listing-prize">9,700,000 INR</p>
     <p class="listing-name">42 Crosby Street, 2S</p>
     <p class="listing-info">3 Beds / 4 Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -1062,7 +1201,7 @@ function flushPlaceHolders(){
   <a href="19575-collins-avenue-34">
     <div class="img-container"><img src="img/listing-img/media.realplusonline.com--CORE-14461678-117_East_57th_Street_18B_01.jpg" alt="19575 Collins Avenue, 34"></div>
   </a>
-    <p class="listing-prize">$9,650,000</p>
+    <p class="listing-prize">9,650,000 INR</p>
     <p class="listing-name">19575 Collins Avenue, 34</p>
     <p class="listing-info">4 Beds / 5 full 1 Half Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -1072,7 +1211,7 @@ function flushPlaceHolders(){
   <a href="230-west-56th-street-50f">
     <div class="img-container"><img src="img/listing-img/media.realplusonline.com--CORE-14652719-205_East_92nd_Street_37C_01.jpg" alt="230 West 56th Street, 50F"></div>
   </a>
-    <p class="listing-prize">$9,495,000</p>
+    <p class="listing-prize">9,495,000 INR</p>
     <p class="listing-name">230 West 56th Street, 50F</p>
     <p class="listing-info">4 Beds / 3.5 Baths</p>
     <p class="open-house-info"><span class="label">Open House:</span><span>Thu, Mar 9th, 12:00 - 1:30 </span><br></p>    <p class="listing-contact">&nbsp;</p>
@@ -1082,7 +1221,7 @@ function flushPlaceHolders(){
   <a href="223-east-62nd-street">
     <div class="img-container"><img src="img/listing-img/media.realplusonline.com--CORE-14881913-70_72_Laight_Street_01.jpg" alt="223 East 62nd Street"></div>
   </a>
-    <p class="listing-prize">$9,400,000</p>
+    <p class="listing-prize">9,400,000 INR</p>
     <p class="listing-name">223 East 62nd Street</p>
     <p class="listing-info">4 Beds / 5.5 Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -1092,7 +1231,7 @@ function flushPlaceHolders(){
   <a href="60-white-street-phe">
     <div class="img-container"><img src="img/listing-img/s3.amazonaws.com-core-listing-images-2016-08-24-140_west_71st_street_8g_01-730.jpg" alt="60 White Street, PHE"></div>
   </a>
-    <p class="listing-prize">$9,275,000</p>
+    <p class="listing-prize">9,275,000 INR</p>
     <p class="listing-name">60 White Street, PHE</p>
     <p class="listing-info">3 Beds / 4 Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -1102,7 +1241,7 @@ function flushPlaceHolders(){
   <a href="100-eleventh-avenue-19a">
     <div class="img-container"><img src="img/listing-img/media.realplusonline.com--CORE-2098270-60_Riverside_Boulevard_2702_01.jpg"></div>
   </a>
-    <p class="listing-prize">$8,950,000</p>
+    <p class="listing-prize">8,950,000 INR</p>
     <p class="listing-name">100 Eleventh Avenue, 19A</p>
     <p class="listing-info">4 Beds / 3.5 Baths</p>
     <p class="open-house-info"><span class="label">Open House:</span><span>Sun, Mar 12th, 12:00 - 1:30 </span><br></p>    <p class="listing-contact">&nbsp;</p>
@@ -1112,7 +1251,7 @@ function flushPlaceHolders(){
   <a href="93-worth-street-ph7">
     <div class="img-container"><img src="img/listing-img/s3.amazonaws.com-core-listing-images-2016-07-26-100_11th_avenue_19a_01-337.jpg" alt="93 Worth Street, PH7"></div>
   </a>
-    <p class="listing-prize">$8,950,000</p>
+    <p class="listing-prize">8,950,000 INR</p>
     <p class="listing-name">93 Worth Street, PH7</p>
     <p class="listing-info">4 Beds / 4.5 Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -1122,7 +1261,7 @@ function flushPlaceHolders(){
   <a href="15-renwick-street-ph3">
     <div class="img-container"><img src="img/listing-img/s3.amazonaws.com-core-listing-images-2016-07-22-425_west_53rd_street_ph3_01-306.jpg" alt="15 Renwick Street, PH3"></div>
   </a>
-    <p class="listing-prize">$8,900,000</p>
+    <p class="listing-prize">8,900,000 INR</p>
     <p class="listing-name">15 Renwick Street, PH3</p>
     <p class="listing-info">4 Beds / 5 Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -1131,7 +1270,7 @@ function flushPlaceHolders(){
   <a href="100-eleventh-avenue-19a">
     <div class="img-container"><img src="img/listing-img/media.realplusonline.com--CORE-2098270-60_Riverside_Boulevard_2702_01.jpg"></div>
   </a>
-    <p class="listing-prize">$8,950,000</p>
+    <p class="listing-prize">8,950,000 INR</p>
     <p class="listing-name">100 Eleventh Avenue, 19A</p>
     <p class="listing-info">4 Beds / 3.5 Baths</p>
     <p class="open-house-info"><span class="label">Open House:</span><span>Sun, Mar 12th, 12:00 - 1:30 </span><br></p>    <p class="listing-contact">&nbsp;</p>
@@ -1140,7 +1279,7 @@ function flushPlaceHolders(){
   <a href="11-beach-street-8a">
     <div class="img-container"><img src="img/listing-img/media.realplusonline.com--CORE-16320801-229_East_2nd_Street_01.jpg" alt="11 Beach Street, 8A"></div>
   </a>
-    <p class="listing-prize">$8,895,000</p>
+    <p class="listing-prize">8,895,000 INR</p>
     <p class="listing-name">11 Beach Street, 8A</p>
     <p class="listing-info">5 Beds / 4.5 Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -1150,7 +1289,7 @@ function flushPlaceHolders(){
   <a href="42-crosby-street-4n">
     <div class="img-container"><img src="img/listing-img/media.realplusonline.com--CORE-16320837-200_East_57th_Street_17G_w_01.jpg" alt="42 Crosby Street, 4N"></div>
   </a>
-    <p class="listing-prize">$8,400,000</p>
+    <p class="listing-prize">8,400,000 INR</p>
     <p class="listing-name">42 Crosby Street, 4N</p>
     <p class="listing-info">3 Beds / 3 Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -1160,7 +1299,7 @@ function flushPlaceHolders(){
   <a href="212-west-18th-street-9d">
     <div class="img-container"><img src="img/listing-img/media.realplusonline.com--CORE-2021973-650_Sixth_Avenue_3H_w_01.jpg" alt="212 West 18th Street, 9D"></div>
   </a>
-    <p class="listing-prize">$7,950,000</p>
+    <p class="listing-prize">7,950,000 INR</p>
     <p class="listing-name">212 West 18th Street, 9D</p>
     <p class="listing-info">2 Beds / 2 Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -1170,7 +1309,7 @@ function flushPlaceHolders(){
   <a href="27a-harrison-street">
     <div class="img-container"><img src="img/listing-img/media.realplusonline.com--CORE-2061817-450_West_17th_Street_1509_07.jpg" alt="27A Harrison Street"></div>
   </a>
-    <p class="listing-prize">$7,495,000</p>
+    <p class="listing-prize">7,495,000 INR</p>
     <p class="listing-name">27A Harrison Street</p>
     <p class="listing-info">3 Beds / 3 Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -1180,7 +1319,7 @@ function flushPlaceHolders(){
   <a href="15-renwick-street-ph4">
     <div class="img-container"><img src="img/listing-img/s3.amazonaws.com-core-email-marketing-custom_listings-74_Kent_Exterior_Day.jpg" alt="15 Renwick Street, PH4"></div>
   </a>
-    <p class="listing-prize">$7,150,000</p>
+    <p class="listing-prize">7,150,000 INR</p>
     <p class="listing-name">15 Renwick Street, PH4</p>
     <p class="listing-info">3 Beds / 3.5 Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -1190,7 +1329,7 @@ function flushPlaceHolders(){
   <a href="160-west-66th-street-phc">
     <div class="img-container"><img src="img/listing-img/s3.amazonaws.com-core-email-marketing-custom_listings-1697_Broadway_302_r_01.jpeg.jpg" alt="160 West 66th Street, PHC"></div>
   </a>
-    <p class="listing-prize">$6,850,000</p>
+    <p class="listing-prize">6,850,000 INR</p>
     <p class="listing-name">160 West 66th Street, PHC</p>
     <p class="listing-info">2 Beds / 2.5 Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -1200,7 +1339,7 @@ function flushPlaceHolders(){
   <a href="52-east-72nd-street-pha">
     <div class="img-container"><img src="img/listing-img/s3.amazonaws.com-core-email-marketing-email_marketing-core-custom_listings-2737_Broadway_01.jpg" alt="52 East 72nd Street, PHA"></div>
   </a>
-    <p class="listing-prize">$6,495,000</p>
+    <p class="listing-prize">6,495,000 INR</p>
     <p class="listing-name">52 East 72nd Street, PHA</p>
     <p class="listing-info">4 Beds / 3.5 Baths</p>
     <p class="open-house-info"><span class="label">Open House:</span><span>Thu, Mar 9th, 12:00 - 2:00 </span><br><span>Sun, Mar 12th, 12:00 - 1:00 </span><br></p>    <p class="listing-contact">&nbsp;</p>
@@ -1210,7 +1349,7 @@ function flushPlaceHolders(){
   <a href="87-leonard-street-maisa">
     <div class="img-container"><img src="img/listing-img/s3.amazonaws.com-core-listing-images-2016-07-13-68_conselyea_street_01-155.jpg" alt="87 Leonard Street, MAISA"></div>
   </a>
-    <p class="listing-prize">$6,495,000</p>
+    <p class="listing-prize">6,495,000 INR</p>
     <p class="listing-name">87 Leonard Street, MAISA</p>
     <p class="listing-info">3 Beds / 3.5 Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -1220,7 +1359,7 @@ function flushPlaceHolders(){
   <a href="109-south-9th-street">
     <div class="img-container"><img src="img/listing-img/s3.amazonaws.com-core-listing-images-2016-07-26-100_11th_avenue_19a_01-337.jpg" alt="109 South 9th Street"></div>
   </a>
-    <p class="listing-prize">$6,250,000</p>
+    <p class="listing-prize">6,250,000 INR</p>
     <p class="listing-name">109 South 9th Street</p>
     <p class="listing-info">9 Beds / 8.5 Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -1230,7 +1369,7 @@ function flushPlaceHolders(){
   <a href="178-garfield-place">
     <div class="img-container"><img src="img/listing-img/s3.amazonaws.com-core-listing-images-2016-08-11-310_riverside_drive_313_01-572.jpg" alt="178 Garfield Place"></div>
   </a>
-    <p class="listing-prize">$5,995,000</p>
+    <p class="listing-prize">5,995,000 INR</p>
     <p class="listing-name">178 Garfield Place</p>
     <p class="listing-info">6 Beds / 3.5 Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -1240,7 +1379,7 @@ function flushPlaceHolders(){
   <a href="450-west-17th-street-1509">
     <div class="img-container"><img src="img/listing-img/s3.amazonaws.com-core-email-marketing-email_marketing-core-custom_listings-1631_NE_9th_Street_01.jpg" alt="450 West 17th Street, 1509"></div>
   </a>
-    <p class="listing-prize">$5,950,000</p>
+    <p class="listing-prize">5,950,000 INR</p>
     <p class="listing-name">450 West 17th Street, 1509</p>
     <p class="listing-info">3 Beds / 2.5 Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -1250,7 +1389,7 @@ function flushPlaceHolders(){
   <a href="15-renwick-street-th3">
     <div class="img-container"><img src="img/listing-img/s3.amazonaws.com-core-email-marketing-email_marketing-core-custom_listings-222_North_8th_Commercial.jpeg.jpg" alt="15 Renwick Street, TH3"></div>
   </a>
-    <p class="listing-prize">$5,900,000</p>
+    <p class="listing-prize">5,900,000 INR</p>
     <p class="listing-name">15 Renwick Street, TH3</p>
     <p class="listing-info">3 Beds / 3.5 Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -1260,7 +1399,7 @@ function flushPlaceHolders(){
   <a href="284-lafayette-street-4d">
     <div class="img-container"><img src="img/listing-img/s3.amazonaws.com-core-listing-images-2016-07-22-425_west_53rd_street_ph3_01-306.jpg" alt="284 Lafayette Street, 4D"></div>
   </a>
-    <p class="listing-prize">$5,850,000</p>
+    <p class="listing-prize">5,850,000 INR</p>
     <p class="listing-name">284 Lafayette Street, 4D</p>
     <p class="listing-info">3 Beds / 3.5 Baths</p>
     <p class="open-house-info"><span class="label">Open House:</span><span>Sun, Mar 12th, 11:30 - 1:00 </span><br></p>    <p class="listing-contact">&nbsp;</p>
@@ -1270,7 +1409,7 @@ function flushPlaceHolders(){
   <a href="41-west-96th-street-15ab">
     <div class="img-container"><img src="img/listing-img/s3.amazonaws.com-core-listing-images-2016-08-22-332_east_77th_street_14_01-676.jpg" alt="41 West 96th Street, 15AB"></div>
   </a>
-    <p class="listing-prize">$5,775,000</p>
+    <p class="listing-prize">5,775,000 INR</p>
     <p class="listing-name">41 West 96th Street, 15AB</p>
     <p class="listing-info">4 Beds / 4.5 Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -1280,7 +1419,7 @@ function flushPlaceHolders(){
   <a href="360-furman-street-1004">
     <div class="img-container"><img src="img/listing-img/s3.amazonaws.com-core-listing-images-2016-08-24-140_west_71st_street_8g_01-730.jpg" alt="360 Furman Street, 1004"></div>
   </a>
-    <p class="listing-prize">$4,995,000</p>
+    <p class="listing-prize">4,995,000 INR</p>
     <p class="listing-name">360 Furman Street, 1004</p>
     <p class="listing-info">4 Beds / 4 Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -1290,7 +1429,7 @@ function flushPlaceHolders(){
   <a href="455-central-park-west-18c">
     <div class="img-container"><img src="img/listing-img/s3.amazonaws.com-core-listing-images-2016-08-25-220_west_111th_street_2b_01-757.jpg" alt="455 Central Park West, 18C"></div>
   </a>
-    <p class="listing-prize">$4,895,000</p>
+    <p class="listing-prize">4,895,000 INR</p>
     <p class="listing-name">455 Central Park West, 18C</p>
     <p class="listing-info">3 Beds / 4 Baths</p>
         <p class="listing-contact">&nbsp;</p>
@@ -1362,7 +1501,7 @@ function flushPlaceHolders(){
             <a class="tel" href="tel:981-906-5421">981-906-5421</a><br>
         </p>
         <p>
-            <b class="headTel">Yash Sharma</b><br>
+            <b class="headTel">Harsh Banthiya</b><br>
             
             <a class="tel" href="tel:989-279-9353">989-279-9353</a><br>
         </p>
@@ -1378,7 +1517,7 @@ function flushPlaceHolders(){
 Neighbourhood - Andheri West</p>
 
 <div class="elementor-icon-wrapper">
-      <a class="elementor-icon elementor-animation-bounce-in" href="https://www.google.co.il/maps?source=tldsi&amp;hl=ru" target="_blank">
+      <a class="elementor-icon elementor-animation-bounce-in" href="https://www.google.co.in/maps/place/Real+Deal+Housing+Pvt+Ltd/@19.1382937,72.8289305,15z/data=!4m5!3m4!1s0x0:0xc4a69af1fd7e2859!8m2!3d19.1382937!4d72.8289305" target="_blank">
         <i class="fa fa-map-marker"></i>
       </a>
     </div>

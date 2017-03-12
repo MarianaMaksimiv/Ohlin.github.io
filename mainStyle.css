@@ -16,6 +16,9 @@ h1.name-header {
 
 }
 
+.marginB{
+	    margin-bottom: 10px;
+}
 /* Enable image placeholders */
 @-moz-document url-prefix(http), url-prefix(file) {
     img:-moz-broken{
@@ -43,12 +46,36 @@ sidebar h4 {
 	font-family: 'Montserrat', sans-serif;
 	color:#0d3c55;
 }
-
+.search-checkoption label {
+	font-weight: lighter;
+}
+.listing-teaser p{
+	font-weight: lighter;
+}
+.tabular-list li span, #comments-text, .listing-single-general p {
+	font-weight: lighter;
+}
 .hidden {
 	display:none;	
 }
-
-
+.name-cont, .list-content {
+	    width: 50%;
+}
+.descript-cont, .list-label {
+	    width: 50%;
+}
+.lastLi{
+	    margin-bottom: 20px;
+}
+.w28 {
+	width: 28%;
+}
+.w30 {
+	width: 30%;
+}
+.w50 {
+	width: 50%;
+}
 .clearfix {
     content: " "; 
     display: block; 
@@ -444,7 +471,7 @@ nav > ul > li > a:hover,
 
 
 #listing-specifics {
-	margin-bottom:10px;	
+	margin-bottom:20px;	
 }
 
 
@@ -703,7 +730,7 @@ header {
 #logo {
 	display: block;
 	width: 50%;
-	max-width: 125px;
+	max-width: 150px;
 	height: auto;	
 	margin: 30px auto 35px;
 }
@@ -1488,13 +1515,11 @@ footer .mail-link {
 }
 
 .listings-list .listing-name {
-	font-weight: bold;
 	margin-right: 100px;
 	text-transform: uppercase;	
 }
 
 .listings-list .listing-prize {
-	font-weight: bold;
 	float: right;
 	margin-left: 10px;
 }
@@ -2077,6 +2102,7 @@ margin-right: 5px;
 .listing-single-details td {
 	padding-right: 0;
     width: 25%;	
+    font-weight: 100;
 }	
 
 .listing-single-details td:last-child {
@@ -2335,7 +2361,7 @@ margin-right: 5px;
 
 .listing-single-info > div,
 .agent-single-info > div {
-	width: 33%;
+	// width: 33%;
 	display: table-cell;
 	vertical-align: top;
 	padding: 0 10px;
@@ -2984,7 +3010,7 @@ footer .inner {
 .press-list li em {
 	font-style:normal !important;
 	font-family: 'Montserrat', sans-serif;
-	/*(color:red;*/
+	font-weight: 100;
 	/*font-size:12px; */  
 }
 
