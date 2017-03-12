@@ -22,7 +22,7 @@
 
 .tabular-list li {
 
-    width: 50%;
+    // width: 50%;
     float: left;
 
 }
@@ -55,7 +55,7 @@
 .tabular-list li  .list-label,
 .tabular-list li .list-content {
     display: inline-block;
-    width: 50%;
+    // width: 50%;
 }
 
 .tabular-list li:nth-of-type(even) .list-content ,
@@ -474,14 +474,14 @@ a .state-hover .mouse-over {
 }
 
 .nav-tabs>li>a {
-    margin-right: 2px;
+    // margin-right: 2px;
     line-height: 1.42857143;
     border: 1px solid transparent;
     border-radius: 0;
     color: #666;
     position: relative;
     display: block;
-    padding: 3px 12px;
+    padding: 3px 9px;
     padding-top: 6px;
     cursor: pointer;
 }
