@@ -101,7 +101,7 @@ and (max-width : 1024px)  {
 	}
 	
 	
-	#logo {
+	svg {
 		margin-top:20px;
 		margin-bottom:20px;
 	}
@@ -378,7 +378,7 @@ and (max-height : 750px)  {
         margin-top: 105px;
     }
 
-    .listing-body #logo {
+    .listing-body svg {
         display: block;
         max-width: 112px;
         height: auto;
