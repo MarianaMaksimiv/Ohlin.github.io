@@ -672,6 +672,13 @@ and (max-width : 520px) {
 		
 	}
 
+	.descript-cont, .list-label {
+    width: 46%;
+}
+.name-cont, .list-content {
+    width: 54%;
+}
+
 	.visible-md {
 		display: none;
 	}
