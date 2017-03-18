@@ -1050,8 +1050,14 @@ main {
 
 .content {
 	
-	padding-right: 20px;
-	width: 75%;
+	
+	width: 100%;
+}
+
+.post-content p {
+	    text-align: justify;
+	font-weight:100;
+    margin-bottom: 15px;
 }
 
 sidebar {
@@ -1295,11 +1301,11 @@ a:hover .hover-text {
     transition: all .5s;
     text-align: center;
 }
-.elementor-25 .elementor-element.elementor-element-ud50gf3 .elementor-icon i {
+.elementor-25 .elementor-element.elementor-element-ud50gf3 .elementor-icon img {
     transform: rotate(0deg);
 }
 
-.elementor-icon i {
+.elementor-icon img {
     width: 1em;
     height: 1em;
 }
